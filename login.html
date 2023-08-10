@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Include your CSS stylesheet -->
+  <link rel="icon" type="image/png" href="favicon.png"> <!-- Include your favicon -->
+  <meta name="author" content="Your Name">
+  <meta name="description" content="Login page for your website">
+  <meta name="keywords" content="login, authentication, web development">
+  <script src="https://cdn.example.com/jquery.min.js"></script> <!-- Include an external script (jQuery in this case) -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    .login-container {
+      width: 350px;
+      margin: auto;
+      margin-top: 150px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .login-container input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #0056b3;
+    }
+    .login-container #already-staff-button {
+      background-color: transparent;
+      color: #333;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>SQM Staff Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="login-button">Login</button>
+    <button id="already-staff-button">Already a staff?</button>
+</div>
+<script src="login.js"></script>
+</body>
+</html>
