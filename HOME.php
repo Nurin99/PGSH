@@ -228,14 +228,49 @@ body {
   display: block;
   margin: 0 auto;
 }
-/* Hide the search bar by default */
-.search-bar.hidden {
-  display: none;
+/* Styling for the appointment table */
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
+
+.appointment-table th, .appointment-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.appointment-table th {
+  background-color: #f0f0f0;
+}
+
+
 
 </style>
 </head>
 <body>
+<?php
+  function toggleDropdown($dropdownId) {
+  $dropdown = document.getElementById($dropdownId);
+  $style = $dropdown.style;
+  $style->display = $style->display === 'none' ? 'block' : 'none';
+  event.stopPropagation(); // Stop the click event from propagating
+}
+
+function search() {
+  // Get the input value
+  $searchValue = $_POST['searchInput'];
+
+  // Perform your search operation here (e.g., redirect to search results page or show results on the same page).
+  echo 'Search for: ' . $searchValue;
+  // Add your search logic here...
+
+  // For demonstration purposes, let's clear the input after the search button is clicked
+  $_POST['searchInput'] = '';
+}
+?>
+
   <div class="header">
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search...">
@@ -253,39 +288,39 @@ body {
   <div class="navbar">
     <!-- Home link -->
     <div class="nav-item">
-      <a href="home.html">HOME</a>
+      <a href="HOME.php">HOME</a>
     </div>
   
     <!-- About link -->
     <div class="nav-item">
-      <a href="about.html">ABOUT</a>
+      <a href="ABOUT.php">ABOUT</a>
     </div>
   
-      <!-- Shared Folder link with dropdown -->
+    <!-- Shared Folder link with dropdown -->
     <div class="nav-item">
-      <a href="sharedfolder.html">LIST IP ADDRESS</a>
+      <a href="SHAREDFOLDER.php">SHARED FOLDER</a>
     </div>
   
-   <!-- Staff Directory link with dropdown -->
+       <!-- Staff Directory link with dropdown -->
   <div class="nav-item right">
     <a href="#" onclick="toggleDropdown('staff-directory-dropdown', event)">STAFF DIRECTORY ▼</a>
   <div class="dropdown" id="staff-directory-dropdown">
-    <a href="insurance-staff-directory.html">INSURANCE Staff</a>
-    <a href="medical-nurse-staff-directory.html">MEDICAL/NURSE Staff</a>
-    <a href="finance-staff-directory.html">FINANCE Staff</a>
-    <a href="bms-staff-directory.html">BMS Staff</a>
-    <a href="encoremed-staff-directory.html">ENCOREMED Staff</a>
+    <a href="INSURANCEDIRECTORY.php">INSURANCE Staff</a>
+    <a href="NURSINGDIRECTORY.php">MEDICAL/NURSE Staff</a>
+    <a href="FINANCEDIRECTORY.php">FINANCE Staff</a>
+    <a href="BMSDIRECTORY.php">BMS Staff</a>
+    <a href="ENCOREMEDDIRECTORY.php">ENCOREMED Staff</a>
     </div>
   </div>
 
     <!-- Encoremed link -->
     <div class="nav-item">
-      <a href="encoreMed.html">ENCOREMED</a>
+      <a href="ENCOREMED.php">ENCOREMED</a>
     </div>
   </div>
 
   <div class="main">
-    <h2>HOME</h2>
+    <h2>Home</h2>
     <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/static-block/1635129419_2662b1a2c7c58452d769.png" class="centered-image" style="height:500px;">
     <p>KPJ Healthcare Berhad (KPJ) is one of the leading private healthcare providers in the region with a network of 28 hospitals in Malaysia, which offers a comprehensive range of medical services. KPJ portfolio includes hospital management, healthcare technical services, hospital development and commissioning, nursing, health science and continual professional healthcare education, pathology services, central procurement and retail pharmacy.
 
@@ -298,45 +333,8 @@ body {
   </div>
 
 </div>
-
 <div class="footer">
   <h2>Footer</h2>
 </div>
-
-  <script>
-function toggleSearchBar() {
-  const searchBar = document.getElementById('searchBar');
-  searchBar.classList.toggle('hidden');
-  if (!searchBar.classList.contains('hidden')) {
-    document.getElementById('searchInput').focus();
-  }
-}
-  function toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
-    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    event.stopPropagation(); // Stop the click event from propagating
-  }
-  
-  // JavaScript to hide dropdowns when clicking outside
-  document.addEventListener('click', (e) => {
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach((dropdown) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.style.display = 'none';
-      }
-    });
-  });
-  function search() {
-  // Get the input value
-  const searchValue = document.getElementById('searchInput').value;
-
-  // Perform your search operation here (e.g., redirect to search results page or show results on the same page).
-  console.log('Search for:', searchValue);
-  // Add your search logic here...
-
-  // For demonstration purposes, let's clear the input after the search button is clicked
-  document.getElementById('searchInput').value = '';
-}
-</script>
 </body>
 </html>
