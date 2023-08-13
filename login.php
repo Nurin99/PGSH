@@ -1,23 +1,26 @@
-<!-- login.php -->
 <?php
+// Start session
 session_start();
 
-// Simulated user data from a database
-$users = [
-    'sqm_user' => ['password' => 'sqm_password', 'role' => 'SQM'],
-    'regular_user' => ['password' => 'regular_password', 'role' => 'RegularStaff']
-];
+// Simulated SQM staff credentials
+$sqmUsername = 'sqm_user';
+$sqmPassword = 'sqm1234*';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Retrieve form data
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (isset($users[$username]) && $users[$username]['password'] === $password) {
-        $_SESSION['user_role'] = $users[$username]['role'];
-        header('Location: dashboard.php'); // Redirect to appropriate page
+    // Authenticate SQM staff
+    if ($username === $sqmUsername && $password === $sqmPassword) {
+        // Authentication successful
+        $_SESSION['username'] = $username; // Store username in session if needed
+        header("Location: HOME.php"); // Redirect to a protected SQM staff page
         exit();
     } else {
-        echo 'Invalid credentials';
+        // Authentication failed
+        header("Location: login.html?error=1"); // Redirect back to login with an error flag
+        exit();
     }
 }
 ?>
