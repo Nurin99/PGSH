@@ -17,6 +17,23 @@
       font-family: Arial, sans-serif;
       background-color: #f5f5f5;
     }
+    .header {
+  padding: 10px;
+  text-align: left;
+  background: #3498db;
+  color: white;
+}
+
+.header-title {
+  font-size: 40px;
+  color: white;
+}
+/* Style for the header description */
+
+.header-description {
+  font-size: 24px;
+  color: #e74c3c;}
+
     .login-container {
       width: 350px;
       margin: auto;
@@ -59,13 +76,35 @@
   </style>
 </head>
 <body>
+  <div class="header">
+  <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/setting/1634883989_d272167c1fcbb4c82fcb.png" style="height:60px;">
+    <h1 class="header-title">PGSH Information</h1>
+    <p class="header-description">Care For Life </p>
+  </div>
+  
   <div class="login-container">
     <h2>SQM Staff Login</h2>
     <input type="text" id="username" placeholder="Username" required>
     <input type="password" id="password" placeholder="Password" required>
     <button id="login-button">Login</button>
-    <button id="already-staff-button">Already a staff?</button>
+    <button id="already-staff-button">Not SQM Staff?</button>
 </div>
 <script src="login.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("password");
+
+    passwordInput.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Trigger the login button click event
+        document.getElementById("login-button").click();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
