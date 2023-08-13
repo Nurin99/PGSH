@@ -228,22 +228,39 @@ body {
   display: block;
   margin: 0 auto;
 }
-/* Styling for the appointment table */
-.appointment-table {
+/* Styling for the Shared Folder section */
+.shared-folder-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.shared-folder-section h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.shared-folder-section p {
+  font-size: 18px;
+}
+.shared-folder-section table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.appointment-table th, .appointment-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
+.shared-folder-section th, .shared-folder-section td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
-.appointment-table th {
-  background-color: #f0f0f0;
+.shared-folder-section th {
+  background-color: #f2f2f2;
 }
+
 
 
 
@@ -274,7 +291,7 @@ function search() {
   <div class="header">
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search...">
-      <button type="button" onclick="search()">Search</button>
+      <button type="button" onclick="search()">&#128269;</button>
     </div>
 <div class="header">
   <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/setting/1634883989_d272167c1fcbb4c82fcb.png" style="height:60px;">
@@ -296,18 +313,6 @@ function search() {
       <a href="ABOUT.php">ABOUT</a>
     </div>
   
-     <!-- Department link with dropdown -->
-  <div class="nav-item">
-    <a href="#" onclick="toggleDropdown('department-dropdown')">DEPARTMENT ▼</a>
-    <div class="dropdown" id="department-dropdown">
-      <a href="department-insurance.html">INSURANCE</a>
-      <a href="department-medical-nurse.html">MEDICAL/NURSE</a>
-      <a href="department-finance.html">FINANCE</a>
-      <a href="department-bms.html">BMS</a>
-      <a href="department-encoremed.html">ENCOREMED</a>
-    </div>
-  </div>
-
   
     <!-- Shared Folder link with dropdown -->
     <div class="nav-item">
@@ -332,15 +337,23 @@ function search() {
     </div>
   </div>
 
- <div class="main">
- <!-- New section for Shared Folder -->
- <div class="shared-folder-section">
-  <h3>Shared Folder Information</h3>
-  <p>Printer IP Address: 192.168.1.100</p>
+<div class="shared-folder-section">
+  <h3>IP Address</h3>
+  <table>
+    <tr>
+      <th>Resource</th>
+      <th>IP Address</th>
+    </tr>
+    <tr>
+      <td>Printer</td>
+      <td>192.168.1.100</td>
+    </tr>
+    <tr>
+      <td>Shared folder</td>
+      <td>192.168.1.222</td>
+    </tr>
+  </table>
 </div>
-</div>
-  </div>
-
 <div class="footer">
   <h2>Footer</h2>
 </div>
