@@ -274,7 +274,7 @@ function search() {
   <div class="header">
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search...">
-      <button type="button" onclick="search()">Search</button>
+      <button type="button" onclick="search()">&#128269;</button>
     </div>
 <div class="header">
   <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/setting/1634883989_d272167c1fcbb4c82fcb.png" style="height:60px;">
@@ -295,18 +295,6 @@ function search() {
     <div class="nav-item">
       <a href="ABOUT.php">ABOUT</a>
     </div>
-  
-     <!-- Department link with dropdown -->
-  <div class="nav-item">
-    <a href="#" onclick="toggleDropdown('department-dropdown')">DEPARTMENT ▼</a>
-    <div class="dropdown" id="department-dropdown">
-      <a href="department-insurance.html">INSURANCE</a>
-      <a href="department-medical-nurse.html">MEDICAL/NURSE</a>
-      <a href="department-finance.html">FINANCE</a>
-      <a href="department-bms.html">BMS</a>
-      <a href="department-encoremed.html">ENCOREMED</a>
-    </div>
-  </div>
 
   
     <!-- Shared Folder link with dropdown -->
