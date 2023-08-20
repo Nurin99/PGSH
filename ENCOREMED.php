@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name']))
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,6 @@ body {
   margin: 0;
   background-color: #f0f0f0;
 }
-
 
 .header {
   padding: 10px;
@@ -58,7 +63,6 @@ body {
 /* Right-aligned link */
 /*.navbar a.right {
   /* Remove margin-left: auto; */
-
 
 /* Change color on hover */
 .navbar a:hover {
@@ -177,7 +181,6 @@ body {
   background-color: #2c3e50; /* Set the background color of the search bar */
 }
 
-
 /* Style for the search input */
 .search-bar input[type="text"] {
   padding: 10px;
@@ -186,7 +189,6 @@ body {
   border-radius: 5px;
   background-color: #f0f0f0; /* Set the background color of the search input */
 }
-
 
 /* Style for the search button */
 .search-bar button {
@@ -245,8 +247,6 @@ body {
   background-color: #f0f0f0;
 }
 
-
-
 </style>
 </head>
 <body>
@@ -288,17 +288,12 @@ function search() {
   <div class="navbar">
     <!-- Home link -->
     <div class="nav-item">
-      <a href="HOME.php">HOME</a>
+      <a href="home.php">HOME</a>
     </div>
-  
-    <!-- About link -->
-    <div class="nav-item">
-      <a href="ABOUT.php">ABOUT</a>
-    </div>
-  
+
     <!-- Shared Folder link with dropdown -->
     <div class="nav-item">
-      <a href="SHAREDFOLDER.php">SHARED FOLDER</a>
+      <a href="sharedfolder.php">IP ADDRESS</a>
     </div>
   
        <!-- Staff Directory link with dropdown -->
@@ -315,7 +310,7 @@ function search() {
 
     <!-- Encoremed link -->
     <div class="nav-item">
-      <a href="ENCOREMED.php">ENCOREMED</a>
+      <a href="encoremed.php">ENCOREMED</a>
     </div>
   </div>
 
