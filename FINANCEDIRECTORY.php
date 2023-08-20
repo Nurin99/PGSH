@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,6 @@ body {
   margin: 0;
   background-color: #f0f0f0;
 }
-
 
 .header {
   padding: 10px;
@@ -58,7 +63,6 @@ body {
 /* Right-aligned link */
 /*.navbar a.right {
   /* Remove margin-left: auto; */
-
 
 /* Change color on hover */
 .navbar a:hover {
@@ -177,7 +181,6 @@ body {
   background-color: #2c3e50; /* Set the background color of the search bar */
 }
 
-
 /* Style for the search input */
 .search-bar input[type="text"] {
   padding: 10px;
@@ -186,7 +189,6 @@ body {
   border-radius: 5px;
   background-color: #f0f0f0; /* Set the background color of the search input */
 }
-
 
 /* Style for the search button */
 .search-bar button {
@@ -228,7 +230,7 @@ body {
   display: block;
   margin: 0 auto;
 }
-}
+
 /* Style for the directory table */
 .directory-table {
   width: 100%;
@@ -242,29 +244,38 @@ body {
   text-align: left;
 }
 
-
-
 </style>
 </head>
 <body>
+
 <?php
-  function toggleDropdown($dropdownId) {
-  $dropdown = document.getElementById($dropdownId);
-  $style = $dropdown.style;
-  $style->display = $style->display === 'none' ? 'block' : 'none';
-  event.stopPropagation(); // Stop the click event from propagating
-}
+// Sample staff data
+$staffData = [
+  ['SAMIRA', 'Chief Nursing Officer', 'samira@kpjpgsh.com', '0176248367'],
+  // Add more staff data here...
+];
 
-function search() {
-  // Get the input value
-  $searchValue = $_POST['searchInput'];
-
-  // Perform your search operation here (e.g., redirect to search results page or show results on the same page).
-  echo 'Search for: ' . $searchValue;
-  // Add your search logic here...
-
-  // For demonstration purposes, let's clear the input after the search button is clicked
-  $_POST['searchInput'] = '';
+function search($staffData) {
+  if (isset($_POST['searchInput'])) {
+    $searchValue = strtolower($_POST['searchInput']);
+    
+    echo '<h2>Search Results</h2>';
+    echo '<table class="directory-table">';
+    foreach ($staffData as $staff) {
+      if (strpos(strtolower($staff[0]), $searchValue) !== false ||
+          strpos(strtolower($staff[1]), $searchValue) !== false ||
+          strpos(strtolower($staff[2]), $searchValue) !== false ||
+          strpos(strtolower($staff[3]), $searchValue) !== false) {
+        echo '<tr>';
+        echo '<td>' . $staff[0] . '</td>';
+        echo '<td>' . $staff[1] . '</td>';
+        echo '<td>' . $staff[2] . '</td>';
+        echo '<td>' . $staff[3] . '</td>';
+        echo '</tr>';
+      }
+    }
+    echo '</table>';
+  }
 }
 ?>
 
@@ -285,39 +296,34 @@ function search() {
   <div class="navbar">
     <!-- Home link -->
     <div class="nav-item">
-      <a href="HOME.php">HOME</a>
+      <a href="home.php">HOME</a>
     </div>
   
-    <!-- About link -->
-    <div class="nav-item">
-      <a href="ABOUT.php">ABOUT</a>
-    </div>
-
     <!-- Shared Folder link with dropdown -->
     <div class="nav-item">
-      <a href="SHAREDFOLDER.php">SHARED FOLDER</a>
+      <a href="sharedfolder.php">IP ADDRESS</a>
     </div>
   
       <!-- Staff Directory link with dropdown -->
   <div class="nav-item right">
     <a href="#" onclick="toggleDropdown('staff-directory-dropdown', event)">STAFF DIRECTORY ▼</a>
   <div class="dropdown" id="staff-directory-dropdown">
-    <a href="INSURANCEDIRECTORY.php">INSURANCE Staff</a>
-    <a href="NURSINGDIRECTORY.php">MEDICAL/NURSE Staff</a>
-    <a href="FINANCEDIRECTORY.php">FINANCE Staff</a>
-    <a href="BMSDIRECTORY.php">BMS Staff</a>
-    <a href="ENCOREMEDDIRECTORY.php">ENCOREMED Staff</a>
+    <a href="insurancedirectory.php">INSURANCE Staff</a>
+    <a href="nursingdirectory.php">MEDICAL/NURSE Staff</a>
+    <a href="financedirectory.php">FINANCE Staff</a>
+    <a href="bmsdirectory.php">BMS Staff</a>
+    <a href="encoremeddirectory.php">ENCOREMED Staff</a>
     </div>
   </div>
 
     <!-- Encoremed link -->
     <div class="nav-item">
-      <a href="ENCOREMED.php">ENCOREMED</a>
+      <a href="encoremed.php">ENCOREMED</a>
     </div>
   </div>
 
   <div class="main">
-    <h2>FINANCE Staff Directory</h2>
+    <h2>Medical/Nurse Staff Directory</h2>
     <table class="directory-table">
       <thead>
         <tr>
@@ -328,7 +334,7 @@ function search() {
         </tr>
       </thead>
       <tbody>
-        <tr>
+      <tr>
           <td>AHMAD FIRAS</td>
           <td>Financial Manager</td>
           <td>ahmadfiras@kpjpgsh.com</td>
@@ -361,7 +367,7 @@ function search() {
       </tbody>
     </table>
   </div>
-  
+
 <div class="footer">
   <h2>Footer</h2>
 </div>
