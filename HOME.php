@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,6 @@ body {
   margin: 0;
   background-color: #f0f0f0;
 }
-
 
 .header {
   padding: 10px;
@@ -177,7 +182,6 @@ body {
   background-color: #2c3e50; /* Set the background color of the search bar */
 }
 
-
 /* Style for the search input */
 .search-bar input[type="text"] {
   padding: 10px;
@@ -186,7 +190,6 @@ body {
   border-radius: 5px;
   background-color: #f0f0f0; /* Set the background color of the search input */
 }
-
 
 /* Style for the search button */
 .search-bar button {
@@ -244,61 +247,53 @@ body {
 .appointment-table th {
   background-color: #f0f0f0;
 }
-
-
-
 </style>
 </head>
 <body>
+  
 <?php
-  function toggleDropdown($dropdownId) {
-  $dropdown = document.getElementById($dropdownId);
-  $style = $dropdown.style;
-  $style->display = $style->display === 'none' ? 'block' : 'none';
-  event.stopPropagation(); // Stop the click event from propagating
-}
-
-function search() {
-  // Get the input value
-  $searchValue = $_POST['searchInput'];
-
-  // Perform your search operation here (e.g., redirect to search results page or show results on the same page).
-  echo 'Search for: ' . $searchValue;
-  // Add your search logic here...
-
-  // For demonstration purposes, let's clear the input after the search button is clicked
-  $_POST['searchInput'] = '';
-}
+   function toggleDropdown($dropdownId) {
+     $dropdown = document.getElementById($dropdownId);
+     $style = $dropdown.style;
+     $style->display = $style->display === 'none' ? 'block' : 'none';
+     event.stopPropagation(); // Stop the click event from propagating
+   }
+   
+   function search() {
+     // Get the input value
+     $searchValue = $_POST['searchInput'];
+   
+     // Perform your search operation here (e.g., redirect to search results page or show results on the same page).
+     echo 'Search for: ' . $searchValue;
+     // Add your search logic here...
+   
+     // For demonstration purposes, let's clear the input after the search button is clicked
+     $_POST['searchInput'] = '';
+   }
 ?>
 
-  <div class="header">
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search...">
-      <button type="button" onclick="search()">&#128269;</button>
-    </div>
 <div class="header">
-  <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/setting/1634883989_d272167c1fcbb4c82fcb.png" style="height:60px;">
-    <h1 class="header-title">PGSH Information</h1>
-    <p class="header-description">Care For Life </p>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button type="button" onclick="search()">&#128269;</button>
   </div>
-  
+  <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/setting/1634883989_d272167c1fcbb4c82fcb.png" style="height:60px;">
+  <h1 class="header-title">PGSH Information</h1>
+  <p class="header-description">Care For Life </p>
 </div>
+
+<!-- Rest of your code including navigation, main content, and footer -->
 <div class="container">
   <!-- Navigation Bar -->
   <div class="navbar">
-    <!-- Home link -->
-    <div class="nav-item">
-      <a href="HOME.php">HOME</a>
+      <!-- Home link -->
+      <div class="nav-item">
+      <a href="home.php">HOME</a>
     </div>
   
-    <!-- About link -->
+<!-- Shared Folder link with dropdown -->
     <div class="nav-item">
-      <a href="ABOUT.php">ABOUT</a>
-    </div>
-  
-    <!-- Shared Folder link with dropdown -->
-    <div class="nav-item">
-      <a href="SHAREDFOLDER.php">SHARED FOLDER</a>
+      <a href="sharedfolder.php">IP ADDRESS</a>
     </div>
   
        <!-- Staff Directory link with dropdown -->
@@ -315,16 +310,14 @@ function search() {
 
     <!-- Encoremed link -->
     <div class="nav-item">
-      <a href="ENCOREMED.php">ENCOREMED</a>
+      <a href="encoremed.php">ENCOREMED</a>
     </div>
   </div>
 
   <div class="main">
     <h2>Home</h2>
     <img src="https://media.kpjhealth.com.my/media/hospital/hosp-25/static-block/1635129419_2662b1a2c7c58452d769.png" class="centered-image" style="height:500px;">
-    <p>KPJ Healthcare Berhad (KPJ) is one of the leading private healthcare providers in the region with a network of 28 hospitals in Malaysia, which offers a comprehensive range of medical services. KPJ portfolio includes hospital management, healthcare technical services, hospital development and commissioning, nursing, health science and continual professional healthcare education, pathology services, central procurement and retail pharmacy.
-
-</p>
+    <p>KPJ Healthcare Berhad (KPJ) is one of the leading private healthcare providers in the region with a network of 28 hospitals in Malaysia, which offers a comprehensive range of medical services. KPJ portfolio includes hospital management, healthcare technical services, hospital development and commissioning, nursing, health science and continual professional healthcare education, pathology services, central procurement and retail pharmacy.</p>
     <h3>More Text</h3>
     <p>Lorem ipsum dolor sit ame.</p>
     <div class="fakeimg" style="height:60px;">Image</div><br>
@@ -338,3 +331,10 @@ function search() {
 </div>
 </body>
 </html>
+
+<?php 
+}else{
+   header("Location: index.php");
+   exit();
+}
+?>
